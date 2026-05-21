@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Preish Aluminum</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+:root{
+    --primary:#071B3B;
+    --secondary:#5E8BFF;
+    --light:#F5F9FF;
+    --white:#ffffff;
+    --gray:#6B7280;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:var(--light);
+    overflow-x:hidden;
+    color:#111827;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:linear-gradient(var(--secondary),var(--primary));
+    border-radius:10px;
+}
+
+/* NAVBAR */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:22px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
+    backdrop-filter:blur(16px);
+    background:rgba(7,27,59,0.85);
+    border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.logo{
+    color:white;
+    font-size:1.5rem;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+nav ul{
+    display:flex;
+    gap:40px;
+    list-style:none;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    font-size:14px;
+    font-weight:500;
+    position:relative;
+    transition:0.3s;
+}
+
+nav ul li a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-8px;
+    width:0%;
+    height:2px;
+    background:var(--secondary);
+    transition:0.4s;
+}
+
+nav ul li a:hover::after{
+    width:100%;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    padding:150px 7% 80px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:50px;
+    position:relative;
+    overflow:hidden;
+    background:
+    radial-gradient(circle at top left,#D9E8FF 0%,transparent 35%),
+    radial-gradient(circle at bottom right,#BCD4FF 0%,transparent 30%),
+    linear-gradient(to bottom right,#ffffff,#EEF5FF);
+}
+
+.blur1,
+.blur2{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(90px);
+    z-index:0;
+}
+
+.blur1{
+    width:350px;
+    height:350px;
+    background:#7DA9FF;
+    top:-100px;
+    left:-100px;
+    opacity:0.4;
+}
+
+.blur2{
+    width:300px;
+    height:300px;
+    background:#11356B;
+    right:-100px;
+    bottom:-100px;
+    opacity:0.2;
+}
+
+.hero-content{
+    flex:1;
+    z-index:2;
+    animation:slideLeft 1s ease;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 18px;
+    background:white;
+    border-radius:50px;
+    margin-bottom:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.07);
+    color:var(--secondary);
+    font-weight:600;
+    font-size:14px;
+}
+
+.hero-content h1{
+    font-size:5rem;
+    line-height:1;
+    margin-bottom:25px;
+    color:var(--primary);
+    font-weight:800;
+}
+
+.hero-content h1 span{
+    color:var(--secondary);
+}
+
+.hero-content p{
+    max-width:620px;
+    line-height:1.9;
+    color:var(--gray);
+    font-size:1.05rem;
+    margin-bottom:40px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:16px 34px;
+    border-radius:60px;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.4s;
+    display:inline-block;
+}
+
+.btn-primary{
+    background:linear-gradient(to right,var(--secondary),#3B6FE8);
+    color:white;
+    box-shadow:0 15px 30px rgba(94,139,255,0.4);
+}
+
+.btn-primary:hover{
+    transform:translateY(-6px);
+}
+
+/* PHONE */
+
+.hero-image{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    position:relative;
+    z-index:2;
+    animation:float 5s ease-in-out infinite;
+}
+
+.phone{
+    width:330px;
+    height:640px;
+    background:white;
+    border:12px solid #111;
+    border-radius:45px;
+    overflow:hidden;
+    position:relative;
+    box-shadow:
+    0 50px 80px rgba(0,0,0,0.15),
+    0 0 0 12px rgba(255,255,255,0.5);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.phone::before{
+    content:'';
+    width:140px;
+    height:28px;
+    background:#111;
+    position:absolute;
+    top:12px;
+    left:50%;
+    transform:translateX(-50%);
+    border-radius:30px;
+    z-index:5;
+}
+
+.phone::after{
+    content:'';
+    position:absolute;
+    width:240px;
+    height:240px;
+    background:rgba(94,139,255,0.18);
+    border-radius:50%;
+    filter:blur(25px);
+}
+
+.phone img{
+    width:180px;
+    height:180px;
+    object-fit:contain;
+    position:relative;
+    z-index:2;
+}
+
+/* FLOATING CARDS */
+
+.floating-card{
+    position:absolute;
+    background:rgba(255,255,255,0.75);
+    backdrop-filter:blur(14px);
+    border:1px solid rgba(255,255,255,0.5);
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.08);
+}
+
+.card1{
+    top:90px;
+    left:30px;
+}
+
+.card2{
+    bottom:80px;
+    right:20px;
+}
+
+.floating-card h3{
+    color:var(--primary);
+    font-size:1.8rem;
+}
+
+.floating-card p{
+    color:var(--gray);
+    font-size:14px;
+}
+
+/* SECTION */
+
+section{
+    padding:120px 7%;
+    position:relative;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:80px;
+}
+
+.section-title h2{
+    font-size:3.5rem;
+    color:var(--primary);
+    margin-bottom:15px;
+}
+
+.section-title span{
+    color:var(--secondary);
+}
+
+.section-title p{
+    max-width:700px;
+    margin:auto;
+    color:var(--gray);
+    line-height:1.8;
+}
+
+/* ABOUT */
+
+.about-container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.about-image{
+    position:relative;
+}
+
+.about-image img{
+    width:100%;
+    border-radius:30px;
+    box-shadow:0 30px 60px rgba(0,0,0,0.1);
+}
+
+.experience{
+    position:absolute;
+    bottom:-30px;
+    right:-20px;
+    background:linear-gradient(to right,var(--primary),#11356B);
+    color:white;
+    padding:25px 35px;
+    border-radius:25px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.15);
+}
+
+.experience h1{
+    font-size:3rem;
+}
+
+.about-text h3{
+    color:var(--secondary);
+    margin-bottom:15px;
+}
+
+.about-text h2{
+    font-size:3rem;
+    color:var(--primary);
+    line-height:1.2;
+    margin-bottom:25px;
+}
+
+.about-text p{
+    line-height:2;
+    color:var(--gray);
+    margin-bottom:25px;
+}
+
+/* FEATURES */
+
+.features{
+    background:linear-gradient(to bottom,#F6FAFF,#EDF4FF);
+}
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:35px;
+}
+
+.feature-card{
+    background:white;
+    padding:45px;
+    border-radius:30px;
+    transition:0.5s;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 20px 40px rgba(0,0,0,0.06);
+}
+
+.feature-card:hover{
+    transform:translateY(-15px);
+}
+
+.feature-card::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:6px;
+    background:linear-gradient(to right,var(--secondary),var(--primary));
+}
+
+.icon{
+    width:70px;
+    height:70px;
+    border-radius:20px;
+    background:linear-gradient(to right,var(--secondary),#85A9FF);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    font-size:2rem;
+    margin-bottom:25px;
+}
+
+.feature-card h3{
+    font-size:1.5rem;
+    color:var(--primary);
+    margin-bottom:15px;
+}
+
+.feature-card p{
+    line-height:1.9;
+    color:var(--gray);
+}
+
+/* STATS */
+
+.stats{
+    background:var(--primary);
+    color:white;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:30px;
+}
+
+.stat{
+    text-align:center;
+    padding:40px;
+    border-radius:25px;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.stat h1{
+    font-size:4rem;
+    color:#A9C5FF;
+}
+
+.stat p{
+    color:#D9E6FF;
+    margin-top:10px;
+}
+
+/* CONTACT */
+
+.contact{
+    background:
+    linear-gradient(to bottom right,#071B3B,#0F2C59);
+    color:white;
+}
+
+.contact-container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.contact-info h2{
+    font-size:3.5rem;
+    margin-bottom:25px;
+}
+
+.contact-info p{
+    line-height:2;
+    color:#D7E4FF;
+    margin-bottom:30px;
+}
+
+.contact-box{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.contact-item{
+    background:rgba(255,255,255,0.08);
+    padding:25px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.contact-item h4{
+    color:#8DB4FF;
+    margin-bottom:10px;
+}
+
+.contact-card{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:30px;
+    padding:50px;
+    backdrop-filter:blur(14px);
+}
+
+.contact-card h3{
+    font-size:2rem;
+    margin-bottom:25px;
+}
+
+.contact-card p{
+    line-height:2;
+    color:#D7E4FF;
+}
+
+/* FOOTER */
+
+footer{
+    background:#020C1B;
+    color:#9FB3D1;
+    text-align:center;
+    padding:30px;
+}
+
+/* ANIMATION */
+
+.reveal{
+    opacity:0;
+    transform:translateY(80px);
+    transition:1s;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+@keyframes slideLeft{
+    from{
+        opacity:0;
+        transform:translateX(-80px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-20px);
+    }
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1000px){
+
+    .hero,
+    .about-container,
+    .contact-container{
+        flex-direction:column;
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .hero{
+        padding-top:170px;
+    }
+
+    .hero-content h1{
+        font-size:3.5rem;
+    }
+
+    nav{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    nav ul{
+        gap:20px;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .experience{
+        right:20px;
+    }
+}
+
+@media(max-width:700px){
+
+    .hero-content h1{
+        font-size:2.8rem;
+    }
+
+    .section-title h2,
+    .about-text h2,
+    .contact-info h2{
+        font-size:2.3rem;
+    }
+
+    .phone{
+        width:260px;
+        height:520px;
+    }
+
+    .phone img{
+        width:140px;
+        height:140px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">PREISH ALUMINUM</div>
+
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="blur1"></div>
+<div class="blur2"></div>
+
+<div class="hero-content">
+
+<div class="badge">
+Premium Aluminum Solutions
+</div>
+
+<h1>
+<span>Strong.</span><br>
+Stylish.<br>
+Built To Last.
+</h1>
+
+<p>
+Providing high-quality aluminum fabrication and installation services
+focused on durability, modern elegance, and precision craftsmanship
+for residential and commercial spaces.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#" class="btn btn-primary">
+Get Started
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-image">
+
+<div class="floating-card card1">
+<h3>100%</h3>
+<p>Quality Materials</p>
+</div>
+
+<div class="phone">
+<img src="logo.png" alt="Preish Aluminum Logo">
+</div>
+
+<div class="floating-card card2">
+<h3>10+</h3>
+<p>Years Experience</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section class="about reveal" id="about">
+
+<div class="section-title">
+<h2>About <span>Us</span></h2>
+
+<p>
+Modern aluminum fabrication built with quality, precision,
+and long-lasting craftsmanship.
+</p>
+</div>
+
+<div class="about-container">
+
+<div class="about-image">
+
+<img src="design.jpg">
+
+<div class="experience">
+<h1>10+</h1>
+<p>Years Experience</p>
+</div>
+
+</div>
+
+<div class="about-text">
+
+<h3>WHO WE ARE</h3>
+
+<h2>
+Trusted Aluminum
+Fabrication Experts
+</h2>
+
+<p>
+Preish Aluminum delivers premium aluminum solutions
+for homes, offices, and commercial establishments.
+Using only high-grade materials and expert craftsmanship,
+we ensure every project meets the highest standards.
+</p>
+
+<p>
+From windows and doors to custom aluminum installations,
+our team combines functionality, durability, and modern
+design to create sleek and reliable solutions.
+</p>
+
+<a href="#" class="btn btn-primary">
+Explore More
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="features reveal" id="services">
+
+<div class="section-title">
+
+<h2>Why <span>Choose Us</span></h2>
+
+<p>
+We combine innovation, durability, and elegant modern design
+to deliver premium aluminum solutions.
+</p>
+
+</div>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+
+<div class="icon">✓</div>
+
+<h3>Proven Quality</h3>
+
+<p>
+We use premium-grade aluminum materials designed for
+maximum durability, strength, and long-term performance.
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<div class="icon">★</div>
+
+<h3>Modern Design</h3>
+
+<p>
+Our stylish aluminum systems are crafted to elevate
+both residential and commercial spaces with elegance.
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<div class="icon">⚡</div>
+
+<h3>Fast & Reliable</h3>
+
+<p>
+From fabrication to installation, we deliver efficient,
+professional, and dependable service every time.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- STATS -->
+
+<section class="stats reveal">
+
+<div class="stats-grid">
+
+<div class="stat">
+<h1>500+</h1>
+<p>Projects Completed</p>
+</div>
+
+<div class="stat">
+<h1>98%</h1>
+<p>Client Satisfaction</p>
+</div>
+
+<div class="stat">
+<h1>10+</h1>
+<p>Years Experience</p>
+</div>
+
+<div class="stat">
+<h1>24/7</h1>
+<p>Customer Support</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact reveal" id="contact">
+
+<div class="contact-container">
+
+<div class="contact-info">
+
+<h2>
+Mission & Vision
+</h2>
+
+<p>
+To provide durable, modern, and high-quality aluminum
+fabrication solutions while maintaining excellent
+craftsmanship, innovation, and customer satisfaction.
+</p>
+
+<div class="contact-box">
+
+<div class="contact-item">
+<h4>Phone</h4>
+<p>0916 - 514 - 3761</p>
+</div>
+
+<div class="contact-item">
+<h4>Email</h4>
+<p>lucenaaluminumlandapp@gmail.com</p>
+</div>
+
+<div class="contact-item">
+<h4>Location</h4>
+<p>Torres, Mapandan, Pangasinan</p>
+</div>
+
+</div>
+
+</div>
+
+<div class="contact-card">
+
+<h3>Our Vision</h3>
+
+<p>
+To become one of the most trusted aluminum fabrication
+and installation companies recognized for exceptional
+quality, innovative designs, and reliable service.
+</p>
+
+<br>
+
+<p>
+We aim to continuously improve our craftsmanship and
+deliver stylish aluminum solutions that stand the test
+of time.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+© 2025 Preish Aluminum — Modern Aluminum Solutions
+</footer>
+
+<script>
+
+window.addEventListener('scroll',reveal);
+
+function reveal(){
+
+var reveals=document.querySelectorAll('.reveal');
+
+for(var i=0;i<reveals.length;i++){
+
+var windowheight=window.innerHeight;
+var revealtop=reveals[i].getBoundingClientRect().top;
+var revealpoint=120;
+
+if(revealtop < windowheight - revealpoint){
+reveals[i].classList.add('active');
+}
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
